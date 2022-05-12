@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <script type="text/javascript" src="javascript/jquery.js"></script>
+    <link rel="icon" type="../image/png" sizes="25x17" href="images/logo16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <title>Swagger</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<style>
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+h1, h2, h3 {
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}  
+.jumbotron {
+    background-color: #003366;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+}
+.requisicao{
+    background-color: #ADD8E6;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+.container-fluid {
+    padding: 60px 50px;
+}
+.bg-grey {
+    background-color: #f6f6f6;
+}
+.ClinicaJonasGabriela {
+    color: #003366;
+    font-size: 50px;
+}
+.logo {
+    color: #003366;
+    font-size: 200px;
+}
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+	/* animation-duration: 4s; */
+}
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #003366;
+}
+.carousel-indicators li {
+    border-color: #003366;
+}
+.carousel-indicators li.active {
+    background-color: #003366;
+}
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+.item span {
+    font-style: normal;
+}
+.panel {
+    border: 1px solid #003366; 
+    border-radius:0 !important;
+    transition: box-shadow 2.5s;
+}
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+.panel-footer .btn:hover {
+    border: 1px solid #003366;
+    background-color: #fff !important;
+    color: #003366;
+}
+.panel-heading {
+    color: #fff !important;
+    background-color: #003366 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.panel-footer {
+    background-color: white !important;
+}
+.panel-footer h3 {
+    font-size: 32px;
+}
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #003366;
+    color: #fff;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #003388;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #003366 !important;
+    background-color: #fff !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #003366;
+}
+.slideanim {visibility:hidden;}
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    visibility: visible;
+}
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+td, th 
+{
+	border: 0px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #dddddd;
+}
+
+.imgGalery 
+{
+	width: 300px;
+	height: 203px;
+	border-radius: 60px;
+}
+
+.interna 
+{
+    margin: 0 auto;
+    width: 80%; /* Valor da Largura */
+}
+
+code {
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
+}
+
+.buttonStartGame {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.buttonInicio {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #003388;
+    border-radius: 5px;
+}
+
+.buttonBuscar {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #003388;
+    border-radius: 5px;
+}
+
+.buttonRanking {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+
+.buttonNumero {
+    display: flex;
+    box-sizing: border-box;
+    align-content: center;
+    border: none;
+    color: white;
+    max-inline-size: 12px;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: rgb(81, 76, 85);
+    border-radius: 5px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #1a4d80;
+}
+  
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+#lugarTotal {
+    font-size: 32px;
+}
+
+#lugarParaConta {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-flow: column;
+    flex-direction: column;
+}
+
+#valorResultado {
+    display: flex;
+    color: #fff;
+    box-sizing: border-box;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    border-block-color: none;
+}
+
+.modal-backdrop {
+    z-index: 100000 !important;
+}
+
+.modal {
+    z-index: 100001 !important;
+}
+
+#loading {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 100002 !important;
+  }
+  
+#loading-image {
+    position: absolute;
+    top: 100px;
+    left: 240px;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100003 !important;
+}
+
+</style>
+<body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <div class="jumbotron">
+        <div class="interna" style="background-color: #dddddd;" align="justify">
+            <div id="contact" class="container-fluid bg-grey">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 style="text-align: center;">
+                                Swagger
+                            </h2>
+                            <hr>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                				<div class="row">
+                    <div class="col-sm-12">
+                        <h3>
+                            Gerenciador
+                        </h3>
+                    </div>
+                </div>
+                				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                Busca Pessoas Aleatorias
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscaPessoasAleatorias()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscaPessoasAleatorias">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaPessoasAleatorias.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscaPessoasAleatorias" name="quantidadeBuscaPessoasAleatorias" placeholder="1" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscaPessoasAleatorias" name="jsonBodyBuscaPessoasAleatorias" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscaPessoasAleatorias" onclick="RequisitaBuscaPessoasAleatorias()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscaPessoasAleatorias">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscaPessoasAleatorias">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscaPessoasAleatorias">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscaPessoasAleatorias">
+                                <textarea class="form-control" id="textRespostaBuscaPessoasAleatorias" name="textRespostaBuscaPessoasAleatorias" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                Buscar Empresa Aleatoria
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscarEmpresaAleatoria()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscarEmpresaAleatoria">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaEmpresasAleatorias.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscarEmpresaAleatoria" name="quantidadeBuscarEmpresaAleatoria" placeholder="1" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscarEmpresaAleatoria" name="jsonBodyBuscarEmpresaAleatoria" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscarEmpresaAleatoria" onclick="RequisitaBuscarEmpresaAleatoria()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscarEmpresaAleatoria">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscarEmpresaAleatoria">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscarEmpresaAleatoria">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscarEmpresaAleatoria">
+                                <textarea class="form-control" id="textRespostaBuscarEmpresaAleatoria" name="textRespostaBuscarEmpresaAleatoria" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                BuscarCPF
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscarCPF()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscarCPF">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaCPFsAleatorias.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscarCPF" name="quantidadeBuscarCPF" placeholder="100" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscarCPF" name="jsonBodyBuscarCPF" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscarCPF" onclick="RequisitaBuscarCPF()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscarCPF">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscarCPF">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscarCPF">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscarCPF">
+                                <textarea class="form-control" id="textRespostaBuscarCPF" name="textRespostaBuscarCPF" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                Buscar CNPJ
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscarCNPJ()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscarCNPJ">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaCNPJsAleatorias.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscarCNPJ" name="quantidadeBuscarCNPJ" placeholder="100" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscarCNPJ" name="jsonBodyBuscarCNPJ" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscarCNPJ" onclick="RequisitaBuscarCNPJ()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscarCNPJ">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscarCNPJ">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscarCNPJ">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscarCNPJ">
+                                <textarea class="form-control" id="textRespostaBuscarCNPJ" name="textRespostaBuscarCNPJ" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                BuscarVeiculos
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscarVeiculos()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscarVeiculos">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaVeiculosAleatorios.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscarVeiculos" name="quantidadeBuscarVeiculos" placeholder="100" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscarVeiculos" name="jsonBodyBuscarVeiculos" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscarVeiculos" onclick="RequisitaBuscarVeiculos()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscarVeiculos">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscarVeiculos">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscarVeiculos">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscarVeiculos">
+                                <textarea class="form-control" id="textRespostaBuscarVeiculos" name="textRespostaBuscarVeiculos" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+				<div class="row">
+                    <div class="row requisicao" >
+                        <div class="col-sm-10">
+                            <h3>
+                                Buscar Renavam
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" onclick="BuscarRenavam()">Testar</button>
+                        </div>
+                    </div>
+                    <div class="row requisicao" style="display: none;" id="BuscarRenavam">
+                        <div class="col-sm-10">
+                            <h4>
+                                http://fordevs.sunsalesystem.com.br/PHP/BuscaRenavamAleatorios.php
+                            </h4>
+                            <br>
+                            <h3>
+                                Parâmetros de entrada
+                            </h3>
+                            							<div class="row requisicao">
+                                <div class="col-sm-3">
+                                    <h4>
+                                        quantidade
+                                    </h4>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="quantidadeBuscarRenavam" name="quantidadeBuscarRenavam" placeholder="100" type="text">
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea class="form-control" id="jsonBodyBuscarRenavam" name="jsonBodyBuscarRenavam" placeholder="JSON body" type="text" required rows="5"></textarea>
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="buttonInicio" id="EnviarBuscarRenavam" onclick="RequisitaBuscarRenavam()">Enviar</button>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="urlRequisicaoBuscarRenavam">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Requisição:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "urlRequisicaoBuscarRenavam">
+                            </div>
+                        </div>
+                        <div class="row requisicao" style="display: none;" id="respostaBuscarRenavam">
+                            <div class="col-sm-2">
+                                <h4>
+                                    Resposta:
+                                </h4>
+                            </div>
+                            <div class="col-sm-10" id = "respostaBuscarRenavam">
+                                <textarea class="form-control" id="textRespostaBuscarRenavam" name="textRespostaBuscarRenavam" placeholder="" type="text" required rows="5"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+            </div>
+        </div>
+    </div>
+    <footer class="bg-grey" style="text-align: center;">
+        SunSale System
+    </footer>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function BuscaPessoasAleatorias(){
+        if(document.getElementById("BuscaPessoasAleatorias").style.display == 'none')
+            document.getElementById("BuscaPessoasAleatorias").style.display = "";
+        else
+            document.getElementById("BuscaPessoasAleatorias").style.display = "none";
+    }
+
+    function RequisitaBuscaPessoasAleatorias(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaPessoasAleatorias.php?quantidade=${document.getElementById('quantidadeBuscaPessoasAleatorias').value}`;
+
+        document.getElementById('urlRequisicaoBuscaPessoasAleatorias').style.display = '';
+        document.getElementById('urlRequisicaoBuscaPessoasAleatorias').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscaPessoasAleatorias').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscaPessoasAleatorias').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscaPessoasAleatorias').disabled = false;
+              MontaRespostaBuscaPessoasAleatorias(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscaPessoasAleatorias(resposta){
+        document.getElementById('respostaBuscaPessoasAleatorias').style.display = '';
+        document.getElementById('textRespostaBuscaPessoasAleatorias').value = resposta;
+    }
+
+	function BuscarEmpresaAleatoria(){
+        if(document.getElementById("BuscarEmpresaAleatoria").style.display == 'none')
+            document.getElementById("BuscarEmpresaAleatoria").style.display = "";
+        else
+            document.getElementById("BuscarEmpresaAleatoria").style.display = "none";
+    }
+
+    function RequisitaBuscarEmpresaAleatoria(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaEmpresasAleatorias.php?quantidade=${document.getElementById('quantidadeBuscarEmpresaAleatoria').value}`;
+
+        document.getElementById('urlRequisicaoBuscarEmpresaAleatoria').style.display = '';
+        document.getElementById('urlRequisicaoBuscarEmpresaAleatoria').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscarEmpresaAleatoria').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscarEmpresaAleatoria').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscarEmpresaAleatoria').disabled = false;
+              MontaRespostaBuscarEmpresaAleatoria(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscarEmpresaAleatoria(resposta){
+        document.getElementById('respostaBuscarEmpresaAleatoria').style.display = '';
+        document.getElementById('textRespostaBuscarEmpresaAleatoria').value = resposta;
+    }
+
+	function BuscarCPF(){
+        if(document.getElementById("BuscarCPF").style.display == 'none')
+            document.getElementById("BuscarCPF").style.display = "";
+        else
+            document.getElementById("BuscarCPF").style.display = "none";
+    }
+
+    function RequisitaBuscarCPF(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaCPFsAleatorias.php?quantidade=${document.getElementById('quantidadeBuscarCPF').value}`;
+
+        document.getElementById('urlRequisicaoBuscarCPF').style.display = '';
+        document.getElementById('urlRequisicaoBuscarCPF').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscarCPF').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscarCPF').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscarCPF').disabled = false;
+              MontaRespostaBuscarCPF(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscarCPF(resposta){
+        document.getElementById('respostaBuscarCPF').style.display = '';
+        document.getElementById('textRespostaBuscarCPF').value = resposta;
+    }
+
+	function BuscarCNPJ(){
+        if(document.getElementById("BuscarCNPJ").style.display == 'none')
+            document.getElementById("BuscarCNPJ").style.display = "";
+        else
+            document.getElementById("BuscarCNPJ").style.display = "none";
+    }
+
+    function RequisitaBuscarCNPJ(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaCNPJsAleatorias.php?quantidade=${document.getElementById('quantidadeBuscarCNPJ').value}`;
+
+        document.getElementById('urlRequisicaoBuscarCNPJ').style.display = '';
+        document.getElementById('urlRequisicaoBuscarCNPJ').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscarCNPJ').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscarCNPJ').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscarCNPJ').disabled = false;
+              MontaRespostaBuscarCNPJ(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscarCNPJ(resposta){
+        document.getElementById('respostaBuscarCNPJ').style.display = '';
+        document.getElementById('textRespostaBuscarCNPJ').value = resposta;
+    }
+
+	function BuscarVeiculos(){
+        if(document.getElementById("BuscarVeiculos").style.display == 'none')
+            document.getElementById("BuscarVeiculos").style.display = "";
+        else
+            document.getElementById("BuscarVeiculos").style.display = "none";
+    }
+
+    function RequisitaBuscarVeiculos(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaVeiculosAleatorios.php?quantidade=${document.getElementById('quantidadeBuscarVeiculos').value}`;
+
+        document.getElementById('urlRequisicaoBuscarVeiculos').style.display = '';
+        document.getElementById('urlRequisicaoBuscarVeiculos').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscarVeiculos').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscarVeiculos').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscarVeiculos').disabled = false;
+              MontaRespostaBuscarVeiculos(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscarVeiculos(resposta){
+        document.getElementById('respostaBuscarVeiculos').style.display = '';
+        document.getElementById('textRespostaBuscarVeiculos').value = resposta;
+    }
+
+	function BuscarRenavam(){
+        if(document.getElementById("BuscarRenavam").style.display == 'none')
+            document.getElementById("BuscarRenavam").style.display = "";
+        else
+            document.getElementById("BuscarRenavam").style.display = "none";
+    }
+
+    function RequisitaBuscarRenavam(){
+        var url = `http://fordevs.sunsalesystem.com.br/PHP/BuscaRenavamAleatorios.php?quantidade=${document.getElementById('quantidadeBuscarRenavam').value}`;
+
+        document.getElementById('urlRequisicaoBuscarRenavam').style.display = '';
+        document.getElementById('urlRequisicaoBuscarRenavam').innerHTML = '<h4>' + url + '</h4>';
+
+        var dados = document.getElementById('jsonBodyBuscarRenavam').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        document.getElementById('EnviarBuscarRenavam').disabled = true;
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              document.getElementById('EnviarBuscarRenavam').disabled = false;
+              MontaRespostaBuscarRenavam(xhr.responseText);
+           }};
+       
+        xhr.send(dados);
+    }
+
+    function MontaRespostaBuscarRenavam(resposta){
+        document.getElementById('respostaBuscarRenavam').style.display = '';
+        document.getElementById('textRespostaBuscarRenavam').value = resposta;
+    }
+
+
+</script>
